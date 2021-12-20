@@ -19,7 +19,7 @@ class CreateSettingsTable extends Migration
             $table->string('email', 100);
             $table->string('logo', 100);
             $table->string('cover_photo', 100);
-            $table->longText('description', 100);
+            $table->longText('description');
             $table->unsignedBigInteger('social_id');
             $table->foreign('social_id')->references('id')->on('socials');
             $table->timestamps();
