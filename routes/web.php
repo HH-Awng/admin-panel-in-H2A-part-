@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // For Settings Route//
-Route::post('settings', [SettingController::class, 'edit'])->name('editsetting');
+Route::get('editsetting', [SettingController::class, 'edit'])->name('editsetting');
 
 // End for settings Route//
 
