@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4842c22e789d247c4b660e69490545f",
+    "content-hash": "2c4bcb45b45c91a71fc8c8c9e6678908",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -960,6 +960,54 @@
             "time": "2021-10-06T17:43:30+00:00"
         },
         {
+            "name": "laravel-frontend-presets/now-ui-dashboard",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-frontend-presets/now-ui-dashboard.git",
+                "reference": "41b7447604078ebe3a49fa745a5adf4e908ab077"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-frontend-presets/now-ui-dashboard/zipball/41b7447604078ebe3a49fa745a5adf4e908ab077",
+                "reference": "41b7447604078ebe3a49fa745a5adf4e908ab077",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "laravel/legacy-factories": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelFrontendPresets\\NowUiPreset\\NowUiPresetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelFrontendPresets\\NowUiPreset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel 5.x Front-end preset for now ui dashboard",
+            "homepage": "https://github.com/creativetimofficial/now-ui-dashboard-laravel",
+            "keywords": [
+                "Now UI",
+                "laravel",
+                "preset"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-frontend-presets/now-ui-dashboard/issues",
+                "source": "https://github.com/laravel-frontend-presets/now-ui-dashboard/tree/v1.0.4"
+            },
+            "time": "2020-09-21T11:42:07+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.76.2",
             "source": {
@@ -1130,6 +1178,62 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2021-12-15T14:02:14+00:00"
+        },
+        {
+            "name": "laravel/legacy-factories",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/legacy-factories.git",
+                "reference": "8091d6d64e0e6ea22fb3326ef0b21936d0a0217c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/legacy-factories/zipball/8091d6d64e0e6ea22fb3326ef0b21936d0a0217c",
+                "reference": "8091d6d64e0e6ea22fb3326ef0b21936d0a0217c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/macroable": "^8.0",
+                "php": "^7.3|^8.0",
+                "symfony/finder": "^3.4|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Illuminate\\Database\\Eloquent\\LegacyFactoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "helpers.php"
+                ],
+                "psr-4": {
+                    "Illuminate\\Database\\Eloquent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The legacy version of the Laravel Eloquent factories.",
+            "homepage": "http://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2021-10-19T13:10:37+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1321,6 +1425,67 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.6.3"
             },
             "time": "2021-12-07T16:41:42+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "b3e804559bf3973ecca160a4ae1068e6c7c167c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/b3e804559bf3973ecca160a4ae1068e6c7c167c6",
+                "reference": "b3e804559bf3973ecca160a4ae1068e6c7c167c6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.42|^9.0",
+                "illuminate/filesystem": "^8.42|^9.0",
+                "illuminate/support": "^8.42|^9.0",
+                "illuminate/validation": "^8.42|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.23|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/ui/tree/v3.4.0"
+            },
+            "time": "2021-11-30T16:22:00+00:00"
         },
         {
             "name": "league/commonmark",
