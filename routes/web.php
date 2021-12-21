@@ -33,6 +33,9 @@ Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
 Route::get('/create',[PostController::class,'create'])->name('create');
 
 //end Uthein and nyi
+
+
+
 // Category Route
 Route::resource('category', CategoryController::class);
 
