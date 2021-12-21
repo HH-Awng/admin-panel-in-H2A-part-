@@ -18,7 +18,16 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+<<<<<<< HEAD
       
+=======
+      <li class="@if ($activePage == 'category') active @endif">
+        <a href="{{ route('category.index') }}">
+          <i class="now-ui-icons design_app"></i>
+          <p>{{ __('Category') }}</p>
+        </a>
+      </li>
+>>>>>>> 2ea4917cdbac46ed5a256814324f1fd7eac8014c
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
@@ -71,6 +80,13 @@
         <a href="{{ route('page.index','typography') }}">
           <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Typography') }}</p>
+        </a>
+      </li>
+    
+      <li class = "@if ($activePage == 'tags') active @endif">
+        <a href="{{route('tags')}}">
+        <i class="fas fa-tags"></i>
+         <p>{{ __('Tags') }}</p>
         </a>
       </li>
       <li class = "">
