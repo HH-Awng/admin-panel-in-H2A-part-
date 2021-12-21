@@ -2,13 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
-<<<<<<< HEAD
-
 use App\Http\Controllers\TagsController;
-
-=======
-use App\Http\Controllers\TagsController;
->>>>>>> d7d40602b8950c22dc88776ff574bdb0abb76f4d
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 
@@ -30,10 +24,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d7d40602b8950c22dc88776ff574bdb0abb76f4d
 //by Uthein and Nyi
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
@@ -43,10 +33,9 @@ Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
 Route::get('/create',[PostController::class,'create'])->name('create');
 
 //end Uthein and nyi
-<<<<<<< HEAD
 
-=======
->>>>>>> d7d40602b8950c22dc88776ff574bdb0abb76f4d
+
+
 // Category Route
 Route::resource('category', CategoryController::class);
 
