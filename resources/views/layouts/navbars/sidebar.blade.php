@@ -78,6 +78,13 @@
           <p>{{ __('Typography') }}</p>
         </a>
       </li>
+    
+      <li class = "@if ($activePage == 'tags') active @endif">
+        <a href="{{route('tags')}}">
+        <i class="fas fa-tags"></i>
+         <p>{{ __('Tags') }}</p>
+        </a>
+      </li>
       <li class = "">
         <a href="{{ route('page.index','upgrade') }}" class="bg-info">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>
