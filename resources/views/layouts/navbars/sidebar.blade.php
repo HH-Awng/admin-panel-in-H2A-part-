@@ -18,6 +18,18 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      <li class="@if ($activePage == 'users') active @endif">
+              <a href="{{ route('create') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Post") }} </p>
+              </a>
+            </li>
+      <li class="@if ($activePage == 'category') active @endif">
+        <a href="{{ route('category.index') }}">
+          <i class="now-ui-icons design_app"></i>
+          <p>{{ __('Category') }}</p>
+        </a>
+      </li>
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
@@ -70,6 +82,13 @@
         <a href="{{ route('page.index','typography') }}">
           <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Typography') }}</p>
+        </a>
+      </li>
+    
+      <li class = "@if ($activePage == 'tags') active @endif">
+        <a href="{{route('tags')}}">
+        <i class="fas fa-tags"></i>
+         <p>{{ __('Tags') }}</p>
         </a>
       </li>
       <li class = "">
