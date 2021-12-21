@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Auth::routes();
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
 
+
+//By Than Zaw Awo
+Route::get('/create',[PostController::class,'create'])->name('create');
 
 //end Uthein and nyi
 // Category Route

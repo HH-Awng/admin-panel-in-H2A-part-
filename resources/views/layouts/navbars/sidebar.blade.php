@@ -18,16 +18,18 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-<<<<<<< HEAD
-      
-=======
+      <li class="@if ($activePage == 'users') active @endif">
+              <a href="{{ route('create') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Post") }} </p>
+              </a>
+            </li>
       <li class="@if ($activePage == 'category') active @endif">
         <a href="{{ route('category.index') }}">
           <i class="now-ui-icons design_app"></i>
           <p>{{ __('Category') }}</p>
         </a>
       </li>
->>>>>>> 2ea4917cdbac46ed5a256814324f1fd7eac8014c
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
