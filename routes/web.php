@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Category Route
+Route::resource('category', CategoryController::class);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
@@ -36,8 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
 // For Settings Route//
 Route::get('editsetting', [SettingController::class, 'edit'])->name('editsetting');
 
-// End for settings Route//
 
+// End for settings Route//
 
 
 
