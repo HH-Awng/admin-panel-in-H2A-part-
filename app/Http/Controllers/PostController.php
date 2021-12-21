@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 
 class PostController extends Controller
@@ -35,7 +37,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ($request->hasFile('feature')) {
+            $title=$request->title;
+            $description=$request->description;
+            $short_description=$request->short_description;
+            $category=$request->category; 
+
+            $feature=$request->file('feature');
+            $path=public_path('/storage/uploads/');
+            $name=time().".".$feature->getClientOriginalExtension();
+            $feature->move($path, $name);
+        }
+
+       
+        
+
+         $post= new Post;
+         $post->title=$title;
+         $post->description=$description;
+         $post->short_description=$short_description;
+         $post->category_id=$category;
+         $post->feature=$name;
+         $post->save();
     }
 
     /**

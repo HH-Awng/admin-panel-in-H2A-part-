@@ -31,6 +31,7 @@ Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
 
 //By Than Zaw Awo
 Route::get('/create',[PostController::class,'create'])->name('create');
+Route::post('/store',[PostController::class,'store'])->name('store');
 
 //end Uthein and nyi
 // Category Route
