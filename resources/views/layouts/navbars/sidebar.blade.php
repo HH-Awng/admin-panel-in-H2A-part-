@@ -87,7 +87,7 @@
     
       <li class = "@if ($activePage == 'tags') active @endif">
         <a href="{{route('tags')}}">
-        <i class="fas fa-tags"></i>
+        <i class="now-ui-icons shopping_tag-content"></i>
          <p>{{ __('Tags') }}</p>
         </a>
       </li>
