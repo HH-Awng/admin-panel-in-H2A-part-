@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
-
+use App\Http\Controllers\TagsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +19,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+//by Uthein and Nyi
+Route::get('/tags', [TagsController::class, 'index'])->name('tags');
+//end Uthein and nyi
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
