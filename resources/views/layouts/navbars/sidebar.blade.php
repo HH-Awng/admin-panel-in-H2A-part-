@@ -18,6 +18,7 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
