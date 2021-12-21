@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -32,9 +35,19 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated = $request->safe()->only(['name', 'slug']);
+        $name = $request->name;
+        $slug = $request->slug;
+        
+
+        $category = new Category;
+        $category->name=$name;
+        $category->slug=$slug;
+        $category->save();
+        return redirect()->back()->with('success', 'Records inserted successfully!');;
     }
 
     /**
@@ -55,8 +68,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+
+    {   $category = Category::find($id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -68,7 +82,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name=$request->name;
+        $slug=$request->slug;
+
+        $category=Category::findorFail($id);
+        $category->name = $name;
+        $category->slug = $slug;
+        $category->save();
+        return redirect('/category');
     }
 
     /**
@@ -79,6 +100,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findorFail($id);
+        $category->delete();
+        return redirect('/category');
     }
 }
