@@ -34,6 +34,9 @@ Route::get('/create',[PostController::class,'create'])->name('create');
 Route::post('/store',[PostController::class,'store'])->name('store');
 
 //end Uthein and nyi
+
+
+
 // Category Route
 Route::resource('category', CategoryController::class);
 
