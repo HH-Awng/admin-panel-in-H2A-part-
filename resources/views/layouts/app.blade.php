@@ -20,7 +20,7 @@
   <link href="{{ asset('assets') }}/demo/demo.css" rel="stylesheet" />
   <!-- summer note -->
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.11/dist/summernote-bs4.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
 </head>
 
 <body class="{{ $class ?? '' }}">
