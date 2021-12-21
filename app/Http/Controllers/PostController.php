@@ -50,8 +50,6 @@ class PostController extends Controller
             $feature->move($path, $name);
         }
 
-       
-        
 
          $post= new Post;
          $post->title=$title;
