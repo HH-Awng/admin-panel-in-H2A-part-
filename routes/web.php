@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
+<<<<<<< HEAD
 use App\Http\Controllers\TagsController;
+=======
+use App\Http\Controllers\CategoryController;
+
+>>>>>>> 787227e037f66e57e69414e03a28e3f7397198de
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +25,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+<<<<<<< HEAD
 //by Uthein and Nyi
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 //end Uthein and nyi
+=======
+// Category Route
+Route::resource('category', CategoryController::class);
+>>>>>>> 787227e037f66e57e69414e03a28e3f7397198de
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
@@ -40,8 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
 // For Settings Route//
 Route::get('editsetting', [SettingController::class, 'edit'])->name('editsetting');
 
-// End for settings Route//
 
+// End for settings Route//
 
 
 

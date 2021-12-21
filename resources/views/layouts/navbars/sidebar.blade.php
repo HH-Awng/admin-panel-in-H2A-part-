@@ -18,6 +18,12 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      <li class="@if ($activePage == 'category') active @endif">
+        <a href="{{ route('category.index') }}">
+          <i class="now-ui-icons design_app"></i>
+          <p>{{ __('Category') }}</p>
+        </a>
+      </li>
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
