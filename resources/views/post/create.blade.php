@@ -18,9 +18,9 @@
                         <h5 class="title">{{__(" Add Posts")}}</h5>
                     </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('profile.update') }}" autocomplete="off" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('store') }}" autocomplete="off" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
+                   
                     @include('alerts.success')
                     <div class="row">
                         <div class="col-md-12">

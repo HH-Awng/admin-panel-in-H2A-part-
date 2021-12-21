@@ -32,6 +32,7 @@ Route::get('/tag_delete/{id}', [TagsController::class, 'destroy'])->name('tag_de
 
 //By Than Zaw Awo
 Route::get('/create',[PostController::class,'create'])->name('create');
+Route::post('/store',[PostController::class,'store'])->name('store');
 
 //end Uthein and nyi
 
