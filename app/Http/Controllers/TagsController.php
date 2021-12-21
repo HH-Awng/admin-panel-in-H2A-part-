@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagsRequest;
 use Illuminate\Http\Request;
+use App\Models\Tags;
+
+
+
 
 class TagsController extends Controller
 {
@@ -13,7 +18,9 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('tags.index');
+        
+        $tags = Tags::orderby('id','DESC')->get();
+        return view('tags.index', compact('tags'));
     }
 
     /**
@@ -34,7 +41,14 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag =  $request->tags;
+        
+        $tags = new Tags;
+        $tags->tags = $tag;
+        $tags->save();
+        return redirect()->back();
+
+
     }
 
     /**
