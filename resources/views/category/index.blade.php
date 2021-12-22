@@ -14,13 +14,9 @@
 
         <div class="card">
             {{-- Success Message --}}
-            @if (session('success'))
-                <div class="alert alert-success text-center text-white font-weight-bold">
-                    {{ session('success') }}
-                </div>
-            @endif
+            @include('alerts.custom_success')
             {{-- End Success Message --}}
-            
+
             <div class="card-header">
                 <h5 class="title">{{ __(' Category') }}</h5>
             </div>
@@ -29,18 +25,29 @@
             <div class="card-body">
                 <form class="row g-3" action="{{ route('category.store') }}" method="POST">
                     @csrf
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label for="Name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Name...">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}"
+                            placeholder="Name...">
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label for="Slug" class="form-label">Slug</label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug...">
+                        <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug') }}"
+                            placeholder="Slug...">
                         @error('slug')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Order" class="form-label">Order</label>
+                        <input type="text" name="order" class="form-control" id="order" value="{{ old('order') }}"
+                            placeholder="Order...">
+                        @error('order')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -61,13 +68,23 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <a href="" class="btn btn-danger btn-sm" id="deleteAllSelectedRecord">Delete Select All</a>
                             <table class="table">
                                 <thead class=" text-primary">
+                                    <th>
+                                        <input type="checkbox" id="checkAll">
+                                    </th>
+                                    <th>
+                                        No
+                                    </th>
                                     <th>
                                         Name
                                     </th>
                                     <th>
                                         Slug
+                                    </th>
+                                    <th>
+                                        Order
                                     </th>
                                     <th>
                                         Created Date
@@ -77,14 +94,24 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
-                                        <tr>
+                                    @foreach ($categories as $key => $category)
+                                        <tr id="category_id{{ $category->id }}">
+                                            <td>
+                                                <input type="checkbox" name="ids" value="{{ $category->id }}">
+                                            </td>
+                                            <td>
+                                                {{ ++$key }}
+                                            </td>
                                             <td>
                                                 {{ $category->name }}
                                             </td>
 
                                             <td>
                                                 {{ $category->slug }}
+                                            </td>
+
+                                            <td>
+                                                {{ $category->order }}
                                             </td>
 
                                             <td>
@@ -138,6 +165,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- Pagination --}}
+                            <div class="d-flex ">
+                                {!! $categories->links() !!}
+                            </div>
+                            {{-- End Pagination --}}
                         </div>
                     </div>
                 </div>
