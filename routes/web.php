@@ -38,6 +38,7 @@ Route::get('/create',[PostController::class,'create'])->name('create');
 
 // Category Route
 Route::resource('category', CategoryController::class);
+Route::get('del/{id}',[CategoryController::class,'destroy'])->name('del');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();

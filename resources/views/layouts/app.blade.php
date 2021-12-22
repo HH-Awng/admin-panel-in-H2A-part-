@@ -54,7 +54,13 @@
                 height: 450,
             });
         });
-
+        $(document).ready(function(){
+        $(".del_btn").click(function(){
+          var delete_id = $(this).attr('data-value');
+              console.log(delete_id);
+              $('#del_row').val(delete_id);
+          });
+        });
     </script>
 </body>
 </html>

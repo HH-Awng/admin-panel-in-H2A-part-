@@ -39,14 +39,13 @@ class CategoryController extends Controller
     {
         $name = $request->name;
         $slug = $request->slug;
-        
+
 
         $category = new Category;
-        $category->name=$name;
-        $category->slug=$slug;
+        $category->name = $name;
+        $category->slug = $slug;
         $category->save();
         return redirect()->back()->with('success', 'Record inserted successfully!');
-
     }
 
     /**
@@ -67,8 +66,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-
-    {   $category = Category::findOrFail($id);
+    {
+        $category = Category::findOrFail($id);
         return view('category.edit', compact('category'));
     }
 
@@ -81,10 +80,10 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $name=$request->name;
-        $slug=$request->slug;
+        $name = $request->name;
+        $slug = $request->slug;
 
-        $category=Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $category->name = $name;
         $category->slug = $slug;
         $category->save();
@@ -97,8 +96,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->id;
         $category = Category::findOrFail($id);
         $category->delete();
         return redirect('/category')->with('success', 'Record deleted successfully!');
