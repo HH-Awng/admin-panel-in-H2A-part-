@@ -29,6 +29,12 @@ Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
 Route::get('/tag_delete/{id}', [TagsController::class, 'destroy'])->name('tag_delete');
 
+Route::get('/tags_edit/{id}', [TagsController::class, 'edit'])->name('tags_edit');
+Route::post('/tags_update/{id}', [TagsController::class, 'update'])->name('tags_update');
+
+
+// Route::post('/upload', [TagsController::class, 'update'])->name('tag_delete');
+
 
 //By Than Zaw Awo
 Route::get('/create',[PostController::class,'create'])->name('create');

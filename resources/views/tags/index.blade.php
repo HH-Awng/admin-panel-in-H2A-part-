@@ -8,6 +8,9 @@
 <div class="panel-header panel-header-sm">
   </div>
   <div class="content">
+
+  
+
         <div class="card">
 
         @if(session('success'))
@@ -15,7 +18,7 @@
 					    {{session('success')}}
 			      </div>	
 		      @endif
-          
+
           <div class="card-header">
             <h5 class="title">{{__(" Tags")}}</h5>
           </div>
@@ -58,7 +61,7 @@
                   <tr>
                     <td>{{++$key}}</td>
                     <td>{{$tag->tags}}</td>
-                    <td class="text-center"><a href="{{route('tag_delete', $tag->id)}}" class="px-3 btn-sm" title="Delete" onclick="return confirm('Are you sure')"><i class="now-ui-icons ui-1_simple-remove"></i> <a href="#" class="px-3 ml-3 btn-sm"><i class="now-ui-icons ui-2_settings-90"></i></a></td>
+                    <td class="text-center"><a href="{{route('tag_delete', $tag->id)}}" class="px-3 btn-sm" title="Delete" onclick="return confirm('Are you sure')"><i class="now-ui-icons ui-1_simple-remove"></i> <a href="{{route('tags_edit', $tag->id)}}" class="px-3 ml-3 btn-sm"><i class="now-ui-icons ui-2_settings-90"></i></a></td>
                   </tr>
                   @endforeach
                   </tbody>

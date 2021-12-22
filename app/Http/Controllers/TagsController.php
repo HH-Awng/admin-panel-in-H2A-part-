@@ -71,9 +71,13 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tags $tag,$id)
     {
         //
+
+        $tags = Tags::findOrFail($id);
+        return view('tags.edit', compact('tags'));
+        
     }
 
     /**
@@ -83,9 +87,18 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tags $tag,$id)
     {
         //
+
+
+        $tags =  $request->tags;
+        
+        $tag = Tags::findOrFail($id);
+        $tag->tags = $tags;
+        $tag->save();
+        return redirect('tags');
+
     }
 
     /**
@@ -102,7 +115,7 @@ class TagsController extends Controller
         if (Tags::findOrFail($id)->delete()) {
             return redirect()->back();
         }
-
-
     }
 }
+
+   //
