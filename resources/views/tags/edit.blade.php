@@ -1,7 +1,7 @@
 @extends('layouts.app', [
   'namePage' => 'Tags',
   'class' => 'sidebar-mini',
-  'activePage' => 'Tags',
+  'activePage' => 'tags',
 ])
 
 @section('content')
@@ -19,14 +19,13 @@
           
             <form action="{{route('tags_update', $tags->id)}}" method="POST" class="row g-3">
               @csrf
-              @include('alerts.success')
                 <div class="col-md-12 form-group">
                   <label for="Name" class="form-label">Name</label>
                   <input type="text" name="tags" class="form-control" value="{{$tags->tags}}"placeholder="Name...">
                   @include('alerts.feedback', ['field' => 'tags'])
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary btn-round ">{{__('Upload')}}</button>
+                    <button type="submit" class="btn btn-primary btn-round ">{{__('Updated')}}</button>
                 </div>
               </form>
           </div>
