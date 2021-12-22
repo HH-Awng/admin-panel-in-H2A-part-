@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('short_description');
             $table->longText('description');
             $table->string('feature');
-            $table->string('user_id');
+            $table->string('user_id')->nullable();
             $table->string('category_id');
             $table->timestamps();
         });

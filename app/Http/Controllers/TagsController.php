@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TagsRequest;
 use Illuminate\Http\Request;
 use App\Models\Tags;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -39,14 +39,14 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagsRequest $request)
     {
         $tag =  $request->tags;
-        
+
         $tags = new Tags;
         $tags->tags = $tag;
         $tags->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Record inserted successfully!');
 
 
     }
@@ -59,7 +59,7 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-        //
+        //dewdwdw
     }
 
     /**
@@ -70,7 +70,9 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tags = Tags::findOrFail($id);
+        return view('tags.edit', compact('tags'));
+        
     }
 
     /**
@@ -80,9 +82,15 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagsRequest $request, $id)
     {
-        //
+        $tags =  $request->tags;
+        
+        $tag = Tags::findOrFail($id);
+        $tag->tags = $tags;
+        $tag->save();
+        return redirect('tags')->with('success', 'Updated successfully!');
+
     }
 
     /**
@@ -93,6 +101,10 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Tags::findOrFail($id)->delete()) {
+            return redirect()->back()->with('success', 'Delete successfully!');
+        }
     }
 }
+
+   //

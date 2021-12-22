@@ -26,7 +26,7 @@
             </li>
       <li class="@if ($activePage == 'category') active @endif">
         <a href="{{ route('category.index') }}">
-          <i class="now-ui-icons design_app"></i>
+          <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Category') }}</p>
         </a>
       </li>
@@ -87,7 +87,7 @@
     
       <li class = "@if ($activePage == 'tags') active @endif">
         <a href="{{route('tags')}}">
-        <i class="fas fa-tags"></i>
+        <i class="now-ui-icons shopping_tag-content"></i>
          <p>{{ __('Tags') }}</p>
         </a>
       </li>

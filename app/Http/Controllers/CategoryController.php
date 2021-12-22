@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = Category::orderby('order', 'ASC')->paginate(10);
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -32,10 +35,19 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
-        
+        $name = $request->name;
+        $slug = $request->slug;
+        $order = $request->order;
+
+
+        $category = new Category;
+        $category->name = $name;
+        $category->slug = $slug;
+        $category->order = $order;
+        $category->save();
+        return redirect()->back()->with('success', 'Record inserted successfully!');
     }
 
     /**
@@ -57,7 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -67,9 +80,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $name = $request->name;
+        $slug = $request->slug;
+        $order = $request->order;
+
+        $category = Category::findOrFail($id);
+        $category->name = $name;
+        $category->slug = $slug;
+        $category->order = $order;
+        $category->save();
+        return redirect('/category')->with('success', 'Record updated successfully!');
     }
 
     /**
@@ -78,8 +100,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->back()->with('success', 'Record deleted successfully!');
+    }
+
+    public function deleteCheckCategory(Request $request)
+    {
+        $ids = $request->ids;
+        Category::whereIn('id',$ids)->delete();
+        return response()->json(['success'=>"Record deleted successfully!"]);
     }
 }
