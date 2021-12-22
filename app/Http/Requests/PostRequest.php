@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use DB;
 
-class TagsRequest extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,11 @@ class TagsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tags' => 'required|string',
+            'title'=>'require',
+            'description'=>'require',
+            'short_description'=>'require',
+            'category'=>'require',
+            'feature'=>'required|mimes:jpg,jpeg,png|image|max:5000'
         ];
     }
 }

@@ -27,10 +27,12 @@ Auth::routes();
 //by Uthein and Nyi
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
+Route::get('/tag_delete/{id}', [TagsController::class, 'destroy'])->name('tag_delete');
 
 
 //By Than Zaw Awo
 Route::get('/create',[PostController::class,'create'])->name('create');
+Route::post('/store',[PostController::class,'store'])->name('store');
 
 //end Uthein and nyi
 
