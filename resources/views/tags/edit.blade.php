@@ -11,11 +11,7 @@
   <div class="content">
     <!-- start card -->
         <div class="card">
-        @if(session('success'))
-			      <div class="alert alert-primary text-center text-white font-weight-bold">	
-					    {{session('success')}}
-			      </div>	
-		      @endif
+        
           <div class="card-header">
             <h5 class="title">{{__(" Edit Tags")}}</h5>
           </div>

@@ -11,13 +11,16 @@
   <div class="content">
     <!-- start card -->
         <div class="card">
-
+        <!-- start section -->
         @if(session('success'))
-			      <div class="alert alert-success text-center text-white font-weight-bold">	
-					    {{session('success')}}
+			      <div class="alert alert-success text-center text-white font-weight-bold alert-dismissible fade show" role="alert">	
+					    {{session('success')}} 
+            <button type="button" data-dismiss="alert" aria-label="Close" class="close btn-close">
+                        <i class="now-ui-icons btn-close ui-1_simple-remove"></i>
+           </button>
 			      </div>	
 		      @endif
-          
+          <!-- end section -->
           <div class="card-header">
             <h5 class="title">{{__(" Tags")}}</h5>
           </div>
@@ -40,8 +43,8 @@
       </div>
 
       {{-- tags Table --}}
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row ">
+        <div class="col-md-12 ">
           <div class="card">
             <div class="card-header">
               <h4 class="card-title"> Tags Table</h4>
@@ -52,10 +55,10 @@
                   <thead class=" text-primary">
 
                   <tr class="text-red font-weight-bold">
-								<th class="n-sticky">No.</th><th class="n-sticky">Name<th class="text-center n-sticky">Action</th>
+								<th>No.</th><th>Name<th class="text-center">Action</th>
 							</tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                     @foreach($tags as $key=>$tag)
                   <tr>
                     <td>{{++$key}}</td>
