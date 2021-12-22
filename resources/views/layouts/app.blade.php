@@ -68,6 +68,30 @@
                 $('#del_row').val(delete_id);
             });
         });
+        $("#checkAll").click(function(e) {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        $('#deleteAllSelectedRecord').click(function(e) {
+            e.preventDefault();
+            var allids = [];
+            $("input:checkbox[name=ids]:checked").each(function() {
+                allids.push($(this).val());
+            });
+
+            $.ajax({
+                url: "{{ route('category.deleteCheckCategory') }}",
+                type: "DELETE",
+                data: {
+                    _token: $("input[name =_token]").val(),
+                    ids: allids
+                },
+                success: function(response) {
+                    $.each(allids, function(key, val) {
+                        $('#category_id' + val).remove();
+                    });
+                }
+            })
+        })
     </script>
 </body>
 
