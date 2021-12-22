@@ -34,7 +34,7 @@
   </div>
 
 
-  @include('sweetalert::alert')
+  @include('alerts.success')
 
 
   <!--   Core JS Files   -->

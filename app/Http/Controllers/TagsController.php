@@ -48,10 +48,8 @@ class TagsController extends Controller
         $tags = new Tags;
         $tags->tags = $tag;
         $tags->save();
-       
-        Alert::success('Success', 'အောင်မြင်စွာ သိမ်းဆည်းပြီးပါဗျာယ်');
-
-        return redirect()->back();
+    
+        return redirect()->back()->with('success', 'Record inserted successfully!');
 
 
     }
@@ -102,8 +100,6 @@ class TagsController extends Controller
 
 
         if (Tags::findOrFail($id)->delete()) {
-
-            Alert::success('Success', 'အောင်မြင်စွာ ဖျက်သိမ်းပြီးပါဗျာယ်');
             return redirect()->back();
         }
 
