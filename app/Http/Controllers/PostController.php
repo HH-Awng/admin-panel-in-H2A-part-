@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TagsRequest;
 use Illuminate\Http\Request;
-use App\Models\Tags;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Post;
 
 
 
-
-
-class TagsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +17,6 @@ class TagsController extends Controller
     public function index()
     {
         
-        $tags = Tags::orderby('id','DESC')->get();
-        return view('tags.index', compact('tags'));
     }
 
     /**
@@ -32,7 +26,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -41,17 +35,29 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagsRequest $request)
+    public function store(Request $request)
     {
-        $tag =  $request->tags;
 
-        $tags = new Tags;
-        $tags->tags = $tag;
-        $tags->save();
-    
-        return redirect()->back()->with('success', 'Record inserted successfully!');
+        if ($request->hasFile('feature')) {
+            $title=$request->title;
+            $description=$request->description;
+            $short_description=$request->short_description;
+            $category=$request->category; 
+
+            $feature=$request->file('feature');
+            $path=public_path('/storage/uploads/');
+            $name=time().".".$feature->getClientOriginalExtension();
+            $feature->move($path, $name);
+        }
 
 
+         $post= new Post;
+         $post->title=$title;
+         $post->description=$description;
+         $post->short_description=$short_description;
+         $post->category_id=$category;
+         $post->feature=$name;
+         $post->save();
     }
 
     /**
@@ -62,7 +68,7 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-        //dewdwdw
+        //
     }
 
     /**
@@ -94,15 +100,8 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tags $tag,$id)
+    public function destroy($id)
     {
         //
-
-
-        if (Tags::findOrFail($id)->delete()) {
-            return redirect()->back();
-        }
-
-
     }
 }

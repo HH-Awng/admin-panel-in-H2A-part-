@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -20,6 +21,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+ 
 
 Auth::routes();
 
@@ -33,11 +35,20 @@ Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 //by Uthein and Nyi
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
 Route::post('/tags', [TagsController::class, 'store'])->name('tag_post');
+Route::get('/tag_delete/{id}', [TagsController::class, 'destroy'])->name('tag_delete');
 
+
+//By Than Zaw Awo
+Route::get('/create',[PostController::class,'create'])->name('create');
+Route::post('/store',[PostController::class,'store'])->name('store');
 
 //end Uthein and nyi
+
+
+
 // Category Route
 Route::resource('category', CategoryController::class);
+Route::get('del/{id}',[CategoryController::class,'destroy'])->name('del');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();

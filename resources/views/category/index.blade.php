@@ -1,165 +1,150 @@
 @extends('layouts.app', [
-    'class' => 'sidebar-mini ',
-    'namePage' => 'Category',
-    'activePage' => 'category',
-    'activeNav' => '',
+'class' => 'sidebar-mini ',
+'namePage' => 'Category',
+'activePage' => 'category',
+'activeNav' => '',
 ])
 
 @section('content')
-  <div class="panel-header panel-header-sm">
-  </div>
-  <div class="content">
+    <div class="panel-header panel-header-sm">
+
+    </div>
+
+    <div class="content">
+
         <div class="card">
-          <div class="card-header">
-            <h5 class="title">{{__(" Category")}}</h5>
-          </div>
-          <div class="card-body">
-            <form class="row g-3">
-                <div class="col-md-6 form-group">
-                  <label for="Name" class="form-label">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Name...">
+            {{-- Success Message --}}
+            @if (session('success'))
+                <div class="alert alert-success text-center text-white font-weight-bold">
+                    {{ session('success') }}
                 </div>
-                <div class="col-md-6 form-group">
-                  <label for="Slug" class="form-label">Slug</label>
-                  <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug...">
-                </div>
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary btn-round ">{{__('Save')}}</button>
-                </div>
-              </form>
-          </div>
-      </div>
-      {{-- Category Table --}}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
+            @endif
+            {{-- End Success Message --}}
+            
             <div class="card-header">
-              <h4 class="card-title"> Category Table</h4>
+                <h5 class="title">{{ __(' Category') }}</h5>
             </div>
+
+            {{-- Create Category Form --}}
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class=" text-primary">
-                    <th>
-                      Name
-                    </th>
-                    <th>
-                      Slug
-                    </th>
-                    <th>
-                      Created Date
-                    </th>
-                    <th class="text-right">
-                      Action
-                    </th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        Dakota Rice
-                      </td>
-                      <td>
-                        Niger
-                      </td>
-                      <td>
-                        Oud-Turnhout
-                      </td>
-                      <td class="text-right">
-                        $36,738
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Minerva Hooper
-                      </td>
-                      <td>
-                        Curaçao
-                      </td>
-                      <td>
-                        Sinaai-Waas
-                      </td>
-                      <td class="text-right">
-                        $23,789
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sage Rodriguez
-                      </td>
-                      <td>
-                        Netherlands
-                      </td>
-                      <td>
-                        Baileux
-                      </td>
-                      <td class="text-right">
-                        $56,142
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Philip Chaney
-                      </td>
-                      <td>
-                        Korea, South
-                      </td>
-                      <td>
-                        Overland Park
-                      </td>
-                      <td class="text-right">
-                        $38,735
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Doris Greene
-                      </td>
-                      <td>
-                        Malawi
-                      </td>
-                      <td>
-                        Feldkirchen in Kärnten
-                      </td>
-                      <td class="text-right">
-                        $63,542
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Mason Porter
-                      </td>
-                      <td>
-                        Chile
-                      </td>
-                      <td>
-                        Gloucester
-                      </td>
-                      <td class="text-right">
-                        $78,615
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Jon Porter
-                      </td>
-                      <td>
-                        Portugal
-                      </td>
-                      <td>
-                        Gloucester
-                      </td>
-                      <td class="text-right">
-                        $98,615
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                <form class="row g-3" action="{{ route('category.store') }}" method="POST">
+                    @csrf
+                    <div class="col-md-6 form-group">
+                        <label for="Name" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Name...">
+                        @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="Slug" class="form-label">Slug</label>
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug...">
+                        @error('slug')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-round ">{{ __('Save') }}</button>
+                    </div>
+                </form>
             </div>
-          </div>
+            {{-- End Create Category Form --}}
         </div>
-        
+        {{-- Category Display Table --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Category Table</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Slug
+                                    </th>
+                                    <th>
+                                        Created Date
+                                    </th>
+                                    <th class="text-right">
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td>
+                                                {{ $category->name }}
+                                            </td>
+
+                                            <td>
+                                                {{ $category->slug }}
+                                            </td>
+
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($category->created_at)->format('d-m-Y') }}
+                                            </td>
+                                            <td class="text-right">
+
+
+                                                <a href="{{ route('category.edit', $category->id) }}">
+                                                    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                                </a>
+                                                <a class="btn btn-danger btn-sm del_btn" data-toggle="modal"
+                                                    href="#exampleModalCenter"
+                                                    data-value="{{ $category->id }}">Delete</a>
+
+                                            </td>
+                                        </tr>
+                                        <!-- Category Delete Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <p class="modal-title" id="exampleModalLongTitle">Delete post?
+                                                        </p>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to permanently remove this category?
+                                                        <form action="{{ route('category.destroy', $category) }}"
+                                                            method="POST" id="post_form">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <input type="hidden" id="del_row" name="id">
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-sm btn-secondary"
+                                                                    data-dismiss="modal">Cancel</button>
+                                                                <button type="submit" id="del8j98okkli99"
+                                                                    class="btn btn-primary btn-sm">Confirm</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- End Category Delete Modal --}}
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      
-  </div>
+
+    </div>
+
 @endsection
