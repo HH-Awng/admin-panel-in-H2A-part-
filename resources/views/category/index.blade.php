@@ -32,7 +32,7 @@
             <div class="card-body">
                 <form class="row g-3" action="{{ route('category.store') }}" method="POST">
                     @csrf
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label for="Name" class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}"
                             placeholder="Name...">
@@ -41,11 +41,20 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-4 form-group">
                         <label for="Slug" class="form-label">Slug</label>
                         <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug') }}"
                             placeholder="Slug...">
                         @error('slug')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Order" class="form-label">Order</label>
+                        <input type="text" name="order" class="form-control" id="order" value="{{ old('order') }}"
+                            placeholder="Order...">
+                        @error('order')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -78,6 +87,9 @@
                                         Slug
                                     </th>
                                     <th>
+                                        Order
+                                    </th>
+                                    <th>
                                         Created Date
                                     </th>
                                     <th class="text-right">
@@ -96,6 +108,10 @@
 
                                             <td>
                                                 {{ $category->slug }}
+                                            </td>
+
+                                            <td>
+                                                {{ $category->order }}
                                             </td>
 
                                             <td>

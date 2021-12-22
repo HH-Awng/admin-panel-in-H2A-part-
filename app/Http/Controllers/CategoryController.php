@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderby('created_at', 'DESC')->paginate(10);
+        $categories = Category::orderby('order', 'ASC')->paginate(10);
         return view('category.index', compact('categories'));
     }
 
@@ -39,11 +39,13 @@ class CategoryController extends Controller
     {
         $name = $request->name;
         $slug = $request->slug;
+        $order = $request->order;
 
 
         $category = new Category;
         $category->name = $name;
         $category->slug = $slug;
+        $category->order = $order;
         $category->save();
         return redirect()->back()->with('success', 'Record inserted successfully!');
     }
@@ -82,10 +84,12 @@ class CategoryController extends Controller
     {
         $name = $request->name;
         $slug = $request->slug;
+        $order = $request->order;
 
         $category = Category::findOrFail($id);
         $category->name = $name;
         $category->slug = $slug;
+        $category->order = $order;
         $category->save();
         return redirect('/category')->with('success', 'Record updated successfully!');
     }
