@@ -9,8 +9,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 
-
-
 class TagsController extends Controller
 {
     /**
@@ -48,7 +46,6 @@ class TagsController extends Controller
         $tags = new Tags;
         $tags->tags = $tag;
         $tags->save();
-    
         return redirect()->back()->with('success', 'Record inserted successfully!');
 
 
@@ -71,10 +68,8 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tags $tag,$id)
+    public function edit($id)
     {
-        //
-
         $tags = Tags::findOrFail($id);
         return view('tags.edit', compact('tags'));
         
@@ -87,11 +82,8 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tags $tag,$id)
+    public function update(TagsRequest $request, $id)
     {
-        //
-
-
         $tags =  $request->tags;
         
         $tag = Tags::findOrFail($id);
@@ -107,13 +99,10 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tags $tag,$id)
+    public function destroy($id)
     {
-        //
-
-
         if (Tags::findOrFail($id)->delete()) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Delete successfully!');
         }
     }
 }

@@ -7,10 +7,9 @@
 @section('content')
 <div class="panel-header panel-header-sm">
   </div>
+  <!-- start content -->
   <div class="content">
-
-  
-
+    <!-- start card -->
         <div class="card">
 
         @if(session('success'))
@@ -18,13 +17,12 @@
 					    {{session('success')}}
 			      </div>	
 		      @endif
-
+          
           <div class="card-header">
             <h5 class="title">{{__(" Tags")}}</h5>
           </div>
-         
+  
           <div class="card-body">
-          
             <form action="{{route('tag_post')}}" method="POST" class="row g-3">
               @csrf
               @include('alerts.success')
@@ -40,7 +38,8 @@
               </form>
           </div>
       </div>
-      {{-- Category Table --}}
+
+      {{-- tags Table --}}
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -72,6 +71,6 @@
         </div>
         
         </div>
-      
+      <!-- end card -->
   </div>
 @endsection
