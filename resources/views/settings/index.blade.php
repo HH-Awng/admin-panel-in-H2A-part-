@@ -84,52 +84,72 @@
 
 
     <!-- Container Div -->
-    <div class="container">
+    <div class="container content">
     
-    
-    <!-- Form -->
+      <div class="card">
+      <div class="card-header">
+        <h3>Add New</h3>
+      </div>
+         <!-- Form -->
     <form action="" method="POST" enctype="multiple/form-data">
 
-    <!-- Container Row -->
-    <div class="row">
+<!-- Container Row -->
+<div class="row settingrow mb-3">
 
-    <!-- Column Md 7 -->
-    <div class="col-md-7">
+<!-- Column Md 7 -->
+<div class="col-md-7">
     
-      <label>Title:</label>
-        <input type="text" name="title" class="form-control setting-form" placeholder="creat-title">
-        
+      <!-- card-header -->
+      
+      <!-- end card-header -->
+      <div class="card-body">
+         <div class="title">
+         <label>Title:</label>
+          <input type="text" name="title" class="form-control setting-form" placeholder="creat-title">
+         </div>
+    
+        <div class="email">
         <label>email:</label>
         <input type="text" name="email" class="form-control setting-form" placeholder="creat-email">
+        </div>
 
         <div class="mb">
         <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
         <textarea class="form-control setting-des"  rows="6" placeholder="create-description"></textarea>
         </div>
-        
+    
+      </div>
+    
+ 
+</div>
+
+<!-- End Column MD 7 -->
+
+<!-- Column Md 5 -->
+<div class="col-md-5">
+<div class="logo mt-2">
+<label>Logo:</label>
+<input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
+</div>
+    
+    <div class="coverphoto mt-2">
+    <label>Cover Photo:</label>
+    <input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
     </div>
-
-    <!-- End Column MD 7 -->
-
-    <!-- Column Md 5 -->
-    <div class="col-md-5">
-    <label>Logo:</label>
-        <input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
-        
-        <label>Cover Photo:</label>
-        <input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
-
-    </div>
-    <!-- EndColumn Md 5 -->
-
-
     <button type="submit" class="btn btn-primary btn-round ml-4">Create</button>
-              
+</div>
+<!-- EndColumn Md 5 -->
 
 
-    </div>
-    <!-- End Form  -->
-    </form>
+
+          
+
+
+</div>
+<!-- End Form  -->
+</form>
+
+      </div>
 
     </div>
 
