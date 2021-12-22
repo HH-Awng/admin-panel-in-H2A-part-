@@ -13,7 +13,7 @@
         <div class="card">
 
         @if(session('success'))
-			      <div class="alert alert-primary text-center text-white font-weight-bold">	
+			      <div class="alert alert-success text-center text-white font-weight-bold">	
 					    {{session('success')}}
 			      </div>	
 		      @endif
