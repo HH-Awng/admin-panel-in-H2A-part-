@@ -43,8 +43,8 @@
       </div>
 
       {{-- tags Table --}}
-      <div class="row ">
-        <div class="col-md-12 ">
+      <div class="row">
+        <div class="col-md-12">
           <div class="card">
             <div class="card-header">
               <h4 class="card-title"> Tags Table</h4>
@@ -58,7 +58,7 @@
 								<th>No.</th><th>Name<th class="text-center">Action</th>
 							</tr>
                   </thead>
-                  <tbody >
+                  <tbody>
                     @foreach($tags as $key=>$tag)
                   <tr>
                     <td>{{++$key}}</td>
