@@ -40,6 +40,7 @@ Route::post('/store',[PostController::class,'store'])->name('store');
 
 // Category Route
 Route::resource('category', CategoryController::class);
+Route::get('del/{id}',[CategoryController::class,'destroy'])->name('del');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
