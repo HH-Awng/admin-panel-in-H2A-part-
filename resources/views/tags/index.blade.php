@@ -17,7 +17,11 @@
               @csrf
                 <div class="col-md-12 form-group">
                   <label for="Name" class="form-label">Name</label>
-                  <input type="text" name="tags" class="form-control" id="name" placeholder="Name...">
+                  <input type="text" name="tags" class="form-control" value="{{old('tags')}}" placeholder="Name...">
+
+                  @error('tags')
+							  <div class="text-danger font-weight-bold">{{$message}}</div>
+							  @enderror
                 </div>
                 
                 <div class="col-md-12">
@@ -37,22 +41,19 @@
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
-                    <th>
-                      Name
-                    </th>
-                    
-                   
-                    <th class="text-left">
-                      Action
-                    </th>
+
+                  <tr class="text-red font-weight-bold">
+								<th class="n-sticky">No.</th><th class="n-sticky">Name<th class="text-center n-sticky">Action</th>
+							</tr>
                   </thead>
                   <tbody>
+                    @foreach($tags as $key=>$tag)
                   <tr>
-                    <td>laravel</td>
-                    <td>
-                      <button>delete</button>
-                    </td>
+                    <td>{{++$key}}</td>
+                    <td>{{$tag->tags}}</td>
+                    <td class="text-center"><a href="{{route('tag_delete', $tag->id)}}" class="px-3 btn-sm" title="Delete" onclick="return confirm('ဖျက်ဖို့စွာ သေချာပါလား')"><i class="fa fa-trash n-fafaicon"></i> <a href="#" class="px-3 ml-3 btn-sm"><i class="n-fafaicon1 fa fa-edit"></i></a></td>
                   </tr>
+                  @endforeach
                   </tbody>
                 </table>
               </div>

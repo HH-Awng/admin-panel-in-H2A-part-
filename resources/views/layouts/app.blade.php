@@ -30,6 +30,11 @@
       @include('layouts.page_template.guest')
     @endguest
   </div>
+
+
+  @include('sweetalert::alert')
+
+
   <!--   Core JS Files   -->
   <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
   <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>

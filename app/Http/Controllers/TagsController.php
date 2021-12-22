@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TagsRequest;
 use Illuminate\Http\Request;
 use App\Models\Tags;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 
@@ -39,13 +41,16 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagsRequest $request)
     {
         $tag =  $request->tags;
-        
+
         $tags = new Tags;
         $tags->tags = $tag;
         $tags->save();
+       
+        Alert::success('Success', 'အောင်မြင်စွာ သိမ်းဆည်းပြီးပါဗျာယ်');
+
         return redirect()->back();
 
 
@@ -59,7 +64,7 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-        //
+        //dewdwdw
     }
 
     /**
@@ -91,8 +96,17 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tags $tag,$id)
     {
         //
+
+
+        if (Tags::findOrFail($id)->delete()) {
+
+            Alert::success('Success', 'အောင်မြင်စွာ ဖျက်သိမ်းပြီးပါဗျာယ်');
+            return redirect()->back();
+        }
+
+
     }
 }
