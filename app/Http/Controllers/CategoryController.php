@@ -107,4 +107,11 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->back()->with('success', 'Record deleted successfully!');
     }
+
+    public function deleteCheckCategory(Request $request)
+    {
+        $ids = $request->ids;
+        Category::whereIn('id',$ids)->delete();
+        return response()->json(['success'=>"Record deleted successfully!"]);
+    }
 }

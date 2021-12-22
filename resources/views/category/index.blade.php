@@ -14,14 +14,7 @@
 
         <div class="card">
             {{-- Success Message --}}
-            @if (session('success'))
-                <div class="alert alert-success text-center font-weight-bold alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" data-dismiss="alert" aria-label="Close" class="close btn-close">
-                        <i class="now-ui-icons btn-close ui-1_simple-remove"></i>
-                    </button>
-                </div>
-            @endif
+            @include('alerts.custom_success')
             {{-- End Success Message --}}
 
             <div class="card-header">
@@ -75,8 +68,12 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <a href="" class="btn btn-danger btn-sm" id="deleteAllSelectedRecord">Delete Select All</a>
                             <table class="table">
                                 <thead class=" text-primary">
+                                    <th>
+                                        <input type="checkbox" id="checkAll">
+                                    </th>
                                     <th>
                                         No
                                     </th>
@@ -98,7 +95,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($categories as $key => $category)
-                                        <tr>
+                                        <tr id="category_id{{ $category->id }}">
+                                            <td>
+                                                <input type="checkbox" name="ids" value="{{ $category->id }}">
+                                            </td>
                                             <td>
                                                 {{ ++$key }}
                                             </td>
