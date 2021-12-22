@@ -15,12 +15,15 @@
         <div class="card">
             {{-- Success Message --}}
             @if (session('success'))
-                <div class="alert alert-success text-center text-white font-weight-bold">
+                <div class="alert alert-success text-center font-weight-bold alert-dismissible fade show" role="alert">
                     {{ session('success') }}
+                    <button type="button" data-dismiss="alert" aria-label="Close" class="close btn-close">
+                        <i class="now-ui-icons btn-close ui-1_simple-remove"></i>
+                    </button>
                 </div>
             @endif
             {{-- End Success Message --}}
-            
+
             <div class="card-header">
                 <h5 class="title">{{ __(' Category') }}</h5>
             </div>
@@ -31,7 +34,8 @@
                     @csrf
                     <div class="col-md-6 form-group">
                         <label for="Name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Name...">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}"
+                            placeholder="Name...">
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -39,7 +43,8 @@
 
                     <div class="col-md-6 form-group">
                         <label for="Slug" class="form-label">Slug</label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug...">
+                        <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug') }}"
+                            placeholder="Slug...">
                         @error('slug')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -64,6 +69,9 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        No
+                                    </th>
+                                    <th>
                                         Name
                                     </th>
                                     <th>
@@ -77,8 +85,11 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($categories as $key => $category)
                                         <tr>
+                                            <td>
+                                                {{ ++$key }}
+                                            </td>
                                             <td>
                                                 {{ $category->name }}
                                             </td>
@@ -138,6 +149,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- Pagination --}}
+                            <div class="d-flex ">
+                                {!! $categories->links() !!}
+                            </div>
+                            {{-- End Pagination --}}
                         </div>
                     </div>
                 </div>
