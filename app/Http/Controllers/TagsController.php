@@ -89,7 +89,7 @@ class TagsController extends Controller
         $tag = Tags::findOrFail($id);
         $tag->tags = $tags;
         $tag->save();
-        return redirect('tags');
+        return redirect('tags')->with('success', 'Updated successfully!');
 
     }
 
