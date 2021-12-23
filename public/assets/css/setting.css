@@ -1,0 +1,18 @@
+/* Setting */
+
+.setting-form{
+    border: 2px solid #E3E3E3;
+}
+.mb .setting-des{
+    border: 2px solid #E3E3E3;
+    border-radius: 10px;
+    
+}
+.setting-des:focus{
+    border-color: #fa7a50;
+    max-height: 40%;
+}
+.settingrow .form-control{
+    padding: 10px 18px 10px 18px
+}
+/* End Setting */

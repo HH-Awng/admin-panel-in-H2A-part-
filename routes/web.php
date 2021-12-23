@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,13 @@ Route::get('/', function () {
  
 
 Auth::routes();
+
+
+// For Settings Route//
+Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+
+
+// End for settings Route//
 
 //by Uthein and Nyi
 Route::get('/tags', [TagsController::class, 'index'])->name('tags');
@@ -62,11 +70,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 });
 
-// For Settings Route//
-Route::get('editsetting', [SettingController::class, 'edit'])->name('editsetting');
-
-
-// End for settings Route//
 
 
 
