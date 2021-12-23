@@ -21,8 +21,11 @@
           <div class="card-body">
             <form action="{{route('tag_post')}}" method="POST" class="row g-3">
               @csrf
+                <div class="col-md-12 form-group">
+                  <label for="Name" class="form-label">Name</label>
+                  <input type="text" name="tags" class="form-control" value="{{old('tags')}}" placeholder="Name...">
+               @include('alerts.feedback', ['field' => 'tags'])
                 </div>
-                
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary btn-round ">{{__('Save')}}</button>
                 </div>
@@ -43,7 +46,7 @@
                   <thead class=" text-primary">
 
                   <tr class="text-red font-weight-bold">
-								<th>No.</th><th>Name<th class="text-center">Action</th>
+								<th>No.</th><th>Name<th class="text-right">Action</th>
 							</tr>
                   </thead>
                   <tbody>
@@ -51,11 +54,12 @@
                   <tr>
                     <td>{{++$key}}</td>
                     <td>{{$tag->tags}}</td>
-                    <td class="text-center">
-                    <a href="{{route('tags_edit', $tag->id)}}">
-                     <button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-<a class="btn btn-danger btn-sm del_btn" data-toggle="modal" href="{{route('tag_delete', $tag->id)}}">Delete<a>
-                    </td>
+                    <td class="text-right">
+<a href="{{route('tags_edit', $tag->id)}}">
+    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+</a>
+<a class="btn btn-danger btn-sm" href="{{route('tag_delete', $tag->id)}}">Delete</a>
+</td>
                   </tr>
                   @endforeach
                   </tbody>
@@ -64,6 +68,7 @@
             </div>
           </div>
         </div>
+        
         </div>
       <!-- end card -->
   </div>
