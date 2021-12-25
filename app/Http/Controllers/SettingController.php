@@ -63,7 +63,7 @@ class SettingController extends Controller
   
     $setting->save();
     
-    return redirect()->back()->with('success','Seuccessfully!');
+    return redirect('/viewsetting')->with('success','Seuccessfully!');
     }
 
     /**
@@ -72,9 +72,9 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $settings=Setting::orderBy('title','DESC')->paginate(1);
+        $settings=Setting::orderBy('title','DESC')->paginate(3);
         return view('settings.show', compact('settings'));
     }
 
@@ -99,7 +99,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
