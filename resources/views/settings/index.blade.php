@@ -91,8 +91,10 @@
         <h3>Add New</h3>
       </div>
          <!-- Form -->
-    <form action="" method="POST" enctype="multiple/form-data">
-
+    <form action="{{route('postsetting')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    
+    
 <!-- Container Row -->
 <div class="row settingrow mb-3">
 
@@ -115,7 +117,8 @@
 
         <div class="mb">
         <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
-        <textarea class="form-control setting-des"  rows="6" placeholder="create-description"></textarea>
+        <textarea class="form-control setting-des"  rows="6" placeholder="create-description"
+        name="description"></textarea>
         </div>
     
       </div>
@@ -129,12 +132,12 @@
 <div class="col-md-5">
 <div class="logo mt-2">
 <label>Logo:</label>
-<input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
+<input type="file" name="logo" class="form-control setting-form" placeholder="creat-title">
 </div>
     
     <div class="coverphoto mt-2">
     <label>Cover Photo:</label>
-    <input type="file" name="title" class="form-control setting-form" placeholder="creat-title">
+    <input type="file" name="coverphoto" class="form-control setting-form" placeholder="creat-title">
     </div>
     <button type="submit" class="btn btn-primary btn-round ml-4">Create</button>
 </div>
@@ -142,14 +145,14 @@
 
 
 
-          
-
-
 </div>
 <!-- End Form  -->
+
 </form>
 
       </div>
+
+      <a href="{{route('showsetting')}}" class="btn btn-primary btn-round ml-4">Setting Result</a>
 
     </div>
 

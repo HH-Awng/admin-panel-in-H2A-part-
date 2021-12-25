@@ -26,11 +26,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 // For Settings Route//
-Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 
+Route::get('/setting', [SettingController::class, 'index'])->name('indexsetting');
+Route::post('/setting', [SettingController::class, 'store'])->name('postsetting');
+// Route::post('/setting', [SettingController::class, 'store'])->name('postsetting');
+// Route::post('/setting/show', ['as'=> 'showsetting', 'uses' => 'SettingController@store']);
+// Route::post('/{setting}/show', SettingController::class, 'store')->name('postsetting');
 
+Route::get('/viewsetting', [SettingController::class, 'show'])->name('showsetting');
+// Route::get('/viewsetting', ['as' => 'setting.show', 'uses' => 'SettingController@show']);
+// Route::get('/deletetting', [SettingController::class, 'create'])->name('viewsetting');
+Route::get('/deletesetting/{id}', [SettingController::class, 'destroy'])->name('deletesetting');
+Route::get('/editsetting/{id}', [SettingController::class, 'edit'])->name('editsetting');
+Route::post('/editsetting/{id}', [SettingController::class, 'update'])->name('updatesetting');
 // End for settings Route//
 
 //by Uthein and Nyi
@@ -57,6 +66,8 @@ Route::post('/store',[PostController::class,'store'])->name('store');
 Route::resource('category', CategoryController::class);
 Route::delete('/selected-category',[CategoryController::class,'deleteCheckCategory'])->name('category.deleteCheckCategory');
 // End Category Route
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

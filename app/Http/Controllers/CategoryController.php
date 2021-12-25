@@ -26,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $settings=Setting::all();
+        return view('settings.view',compact('settings'));
     }
 
     /**

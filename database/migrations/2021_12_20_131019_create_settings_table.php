@@ -20,8 +20,6 @@ class CreateSettingsTable extends Migration
             $table->string('logo', 100);
             $table->string('cover_photo', 100);
             $table->longText('description');
-            $table->bigInteger('social_id')->unsigned();
-            $table->foreign('social_id')->references('id')->on('socials')->onDelete('cascade');
             $table->timestamps();
         });
     }

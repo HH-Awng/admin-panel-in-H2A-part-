@@ -30,6 +30,13 @@
           <p>{{ __('Category') }}</p>
         </a>
       </li>
+      <li class="@if ($activePage == 'users') active @endif">
+              <a href="{{ route('indexsetting') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Setting") }} </p>
+              </a>
+      </li>
+      
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
             <i class="fab fa-laravel"></i>
