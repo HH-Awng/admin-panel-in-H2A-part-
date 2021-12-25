@@ -25,7 +25,8 @@ class SettingController extends Controller
      */
     public function create()
     {
-        
+        $settings=Setting::all();
+        return view('settings.view',compact('settings'));
     }
 
     /**
@@ -73,7 +74,8 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-        //
+        $settings=Setting::orderBy('title','DESC')->paginate(1);
+        return view('settings.show', compact('settings'));
     }
 
     /**
@@ -84,7 +86,8 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        
+        $settings = Setting::findOrFail($id);
+        return view('settings.edit', compact('settings'));
     }
 
     /**
@@ -107,6 +110,8 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Setting::findOrFail($id)->delete()) {
+            return redirect()->back()->with('success', 'Delete Successfully!');
+        }
     }
 }
