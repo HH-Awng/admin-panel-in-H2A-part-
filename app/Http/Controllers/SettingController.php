@@ -99,28 +99,26 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $settings = Setting::findOrFail($id);
+        $setting = Setting::find($id);
         $setting->title = $request->input('title');
         $setting->email = $request->input('email');
-        $setting->descripton = $request->input('description');
+        $setting->description= $request->input('description');
 
         if($request->hasfile('logo')){
             $file = $request->file('logo');
-                $extension = $request->logo->getClientOriginalExtension();
-                $fileName = uniqid().'.'.$extension;
-                $file->move('/storage/settingimage', $fileName);
-                $logo = $fileName;
-                $setting-> logo = $logo;
-            }else {
-                $setting->logo = '';
-            }
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'logo-'.time().'.'.$extension;
+            $file->move('storage/settingimage', $filename);
+            $setting->logo = $filename;
+        } else {
+            $setting->logo = '';
+        }
             if($request->hasfile('coverphoto')){
                 $file = $request->file('coverphoto');
-                    $extension = $request->coverphoto->getClientOriginalExtension();
-                    $fileName = uniqid().'.'.$extension;
-                    $file->move('/storage/settingimage', $fileName);
-                    $coverphoto = $fileName;
-                    $setting->coverphoto = $coverphoto;
+                $extension = $file->getClientOriginalExtension();
+                $filename = 'cover-'.time().'.'.$extension;
+                $file->move('storage/settingimage', $filename);
+                $setting->coverphoto = $filename;
             } else {
                 $setting->coverphoto = '';
             }

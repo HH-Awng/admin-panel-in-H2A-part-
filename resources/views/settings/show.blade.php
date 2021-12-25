@@ -51,8 +51,8 @@
                             <td>{{$setting->title}}</td>
                             <td>{{ Illuminate\Support\Str::of($setting->description )->words(10)}}</td>
                             <td>{{$setting->email}}</td>
-                            <td><img src="{{ asset('storage/settingimage/' . $setting->logo) }}" /></td>
-                            <td><img src="{{ asset('storage/settingimage/' . $setting->coverphoto) }}" />
+                            <td><img src="{{ asset('storage/settingimage/'.$setting->logo) }}" /></td>
+                            <td><img src="{{ asset('storage/settingimage/'.$setting->coverphoto) }}" />
                             
                         </td>
                             <td>

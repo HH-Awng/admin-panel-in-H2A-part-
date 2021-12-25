@@ -30,13 +30,7 @@ Auth::routes();
 
 Route::get('/setting', [SettingController::class, 'index'])->name('indexsetting');
 Route::post('/setting', [SettingController::class, 'store'])->name('postsetting');
-// Route::post('/setting', [SettingController::class, 'store'])->name('postsetting');
-// Route::post('/setting/show', ['as'=> 'showsetting', 'uses' => 'SettingController@store']);
-// Route::post('/{setting}/show', SettingController::class, 'store')->name('postsetting');
-
 Route::get('/viewsetting', [SettingController::class, 'show'])->name('showsetting');
-// Route::get('/viewsetting', ['as' => 'setting.show', 'uses' => 'SettingController@show']);
-// Route::get('/deletetting', [SettingController::class, 'create'])->name('viewsetting');
 Route::get('/deletesetting/{id}', [SettingController::class, 'destroy'])->name('deletesetting');
 Route::get('/editsetting/{id}', [SettingController::class, 'edit'])->name('editsetting');
 Route::post('/editsetting/{id}', [SettingController::class, 'update'])->name('updatesetting');
